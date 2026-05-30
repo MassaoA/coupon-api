@@ -24,7 +24,6 @@ public class Coupon {
     private boolean redeemed;
     private CouponStatus status;
 
-    // Construtor de criação — valida e sanitiza
     public Coupon(String code, String description, BigDecimal discountValue,
                   LocalDateTime expirationDate, boolean published) {
         this.id = UUID.randomUUID();
@@ -58,7 +57,7 @@ public class Coupon {
     private void validate() {
         if (code == null || code.length() != CODE_LENGTH) {
             throw new InvalidCouponCodeException(
-                "O código do cupom deve ter exatamente 6 caracteres alfanuméricos. Código gerado: " + code
+                "O código do cupom deve ter exatamente 6 caracteres alfanuméricos. Código: " + code
             );
         }
         if (discountValue == null || discountValue.compareTo(MINIMUM_DISCOUNT) < 0) {
